@@ -1,0 +1,2 @@
+# ASP.NET Core MVC
+Спецкурс ASP.NET Core MVC 2017-2018

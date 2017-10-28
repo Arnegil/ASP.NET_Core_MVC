@@ -1,0 +1,18 @@
+﻿@model StudentsModel
+@{
+    ViewData["Title"] = "Students Page";
+}
+
+<div id="students">
+    <p>Список студентов:</p>
+    @foreach (var item in Model.Students)
+    {
+        <div class="item">
+            <br />
+            <p>Name: @item.FullName</p>
+            <p>BirthDate: @item.BirthDate</p>
+            <p>City: @item.City</p>
+            <p>TabelNumber: @item.TabelNumber</p>
+        </div>
+    }
+</div>

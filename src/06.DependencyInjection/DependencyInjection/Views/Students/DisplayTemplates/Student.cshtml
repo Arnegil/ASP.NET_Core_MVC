@@ -1,0 +1,17 @@
+﻿@using DependencyInjection.Services
+@model Student
+@inject IStudentHelper StudentHelper
+
+<tr>
+    <td>@Html.ActionLink(Model.FullName, "ViewStudent", "Students", new {id = Model.Id})</td>
+    <td>@Html.DisplayFor(x => x.BirthDate)</td>
+    <td>@Html.DisplayFor(x => x.City)</td>
+    <td>
+        @Html.DisplayFor(x => x.TabelNumber)
+        @if (StudentHelper.IsCoolTableNumber(Model.TabelNumber))
+        {
+            <text> Воу</text>
+        }
+    </td>
+    
+</tr>

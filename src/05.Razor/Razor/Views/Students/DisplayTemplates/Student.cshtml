@@ -5,4 +5,5 @@
     <td>@Html.DisplayFor(x => x.BirthDate)</td>
     <td>@Html.DisplayFor(x => x.City)</td>
     <td>@Html.DisplayFor(x => x.TabelNumber)</td>
+    <td><a class="btn btn-primary" href="@Url.Action("DeleteStudent", "Students", new {id = Model.Id})">Удалить</a></td>
 </tr>

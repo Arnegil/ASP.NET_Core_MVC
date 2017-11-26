@@ -80,14 +80,9 @@ namespace DependencyInjection.Controllers
         [HttpGet]
         public async Task<IActionResult> DeleteStudent(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var service = HttpContext.RequestServices.GetService<IStudentService>();
             await service.RemoveStudent(id);
-            return new ObjectResult("Success deleted!");
+            return View("Index", await _studentGenerator.GetStudentsModel());
         }
     }
 }

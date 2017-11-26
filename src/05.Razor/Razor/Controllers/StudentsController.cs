@@ -23,7 +23,7 @@ namespace Razor.Controllers
                 return NewStudent();
             }
             
-            student.Id = DataSource.Students.Max(x => x.Id) + 1;
+            student.Id = DataSource.Students.Count > 0 ? DataSource.Students.Max(x => x.Id) + 1 : 0;
             DataSource.Students.Add(student);
             var createdStudent = DataSource.Students.FirstOrDefault(x => x.Id == student.Id);
             return View("ViewStudent", createdStudent);
@@ -66,16 +66,8 @@ namespace Razor.Controllers
         [HttpGet]
         public IActionResult DeleteStudent(int id)
         {
-            if (!DataSource.Students.Exists(x => x.Id == id))
-                ModelState.AddModelError("Id", $"Not exists with id = {id}");
-
-            if (ModelState.IsValid)
-            {
-                DataSource.Students.RemoveAll(x => x.Id == id);
-                return new ObjectResult("Success deleted!");
-            }
-
-            return BadRequest(ModelState);
+            DataSource.Students.RemoveAll(x => x.Id == id);
+            return View("Index", new StudentsModel { Students = DataSource.Students.OrderBy(x => x.FullName) });
         }
     }
 }

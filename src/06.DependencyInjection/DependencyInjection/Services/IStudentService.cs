@@ -40,7 +40,7 @@ namespace DependencyInjection.Services
 
         public async Task<int> GetNewModelId()
         {
-            return await Task.FromResult(_dataSource.Students.Max(x => x.Id) + 1);
+            return await Task.FromResult(_dataSource.Students.Count > 0 ? _dataSource.Students.Max(x => x.Id) + 1 : 0);
         }
 
         public async Task CreateNewStudent(Student student)

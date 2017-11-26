@@ -1,0 +1,8 @@
+﻿@model Student
+
+<tr>
+    <td>@Html.ActionLink(Model.FullName, "ViewStudent", "Students", new {id = Model.Id})</td>
+    <td>@Html.DisplayFor(x => x.BirthDate)</td>
+    <td>@Html.DisplayFor(x => x.City)</td>
+    <td>@Html.DisplayFor(x => x.TabelNumber)</td>
+</tr>

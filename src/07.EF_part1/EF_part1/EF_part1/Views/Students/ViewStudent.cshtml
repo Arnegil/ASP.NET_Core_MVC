@@ -1,0 +1,37 @@
+﻿@model Student
+@{
+    ViewData["Title"] = Model.FullName;
+}
+
+<div id="student">
+    <div>
+        <a class="btn btn-primary" href="@Url.Action("EditStudent", "Students", new {id = Model.Id})">Редактировать</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Students")">Список</a>
+    </div>
+    <table title="Cтудент">
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.LastName)</td>
+            <td>@Html.DisplayFor(x => x.LastName)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.FirstName)</td>
+            <td>@Html.DisplayFor(x => x.FirstName)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.MiddleName)</td>
+            <td>@Html.DisplayFor(x => x.MiddleName)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.TabelNumber)</td>
+            <td>@Html.DisplayFor(x => x.TabelNumber)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.BirthDate)</td>
+            <td>@Html.DisplayFor(x => x.BirthDate)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(x => x.City)</td>
+            <td>@Html.DisplayFor(x => x.City)</td>
+        </tr>
+    </table>
+</div>

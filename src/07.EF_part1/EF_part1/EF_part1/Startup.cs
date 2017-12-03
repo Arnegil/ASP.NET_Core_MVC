@@ -7,7 +7,6 @@ using EF_part1.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,24 +20,22 @@ namespace EF_part1
         }
 
         public IConfiguration Configuration { get; }
-
-        private const string ConnectionString =
-            "Server=(localdb)\\mssqllocaldb;" +
-            "Database=StudentsDb;" +
-            "Trusted_Connection=True;" +
-            "MultipleActiveResultSets=true;";
-
-
-        private string constr =
-            @"Data Source=(LocalDB)\MSSQLLocalDB;
-            Database=DBStudents - копия;
-            Trusted_Connection=True;
-            MultipleActiveResultSets=true;";
+        
+        private readonly string ConnectionString =
+            @"Data Source=(localdb)\MSSQLLocalDB;
+            Initial Catalog=StudentsDB;
+            Integrated Security=True;
+            Connect Timeout=60;
+            Encrypt=False;
+            TrustServerCertificate=True;
+            ApplicationIntent=ReadWrite;
+            MultiSubnetFailover=False";
         
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StudentDbContext>(x => x.UseInMemoryDatabase("StudentsDB"));
+            //services.AddDbContext<StudentDbContext>(x => x.UseInMemoryDatabase("StudentsDB"));
+            services.AddDbContext<StudentDbContext>(x => x.UseSqlServer(ConnectionString));
 
             services.AddTransient<IStudentService, StudentService>(StudentServiceFactory);
             services.AddTransient<IStudentGenerator, StudentGenerator>(StudentGeneratorFactory);

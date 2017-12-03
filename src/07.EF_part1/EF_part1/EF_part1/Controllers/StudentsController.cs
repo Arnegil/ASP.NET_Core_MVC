@@ -36,7 +36,7 @@ namespace EF_part1.Controllers
             }
 
             var service = HttpContext.RequestServices.GetService<IStudentService>();
-            var newStudentId = await service.AddStudent(student.ConvertStudentToDBModel());
+            int newStudentId = await service.AddStudent(student.ConvertStudentToDBModel());
             var createdStudent = await _studentGenerator.GetStudent(newStudentId);
             return View("ViewStudent", createdStudent);
         }
@@ -57,8 +57,9 @@ namespace EF_part1.Controllers
             }
 
             var service = HttpContext.RequestServices.GetService<IStudentService>();
-            await service.UpdateStudent(student.ConvertStudentToDBModel());
-            return RedirectToAction("ViewStudent", student);
+            int newStudentId = await service.UpdateStudent(student.ConvertStudentToDBModel());
+            var createdStudent = await _studentGenerator.GetStudent(newStudentId);
+            return RedirectToAction("ViewStudent", createdStudent);
         }
 
         [HttpGet]

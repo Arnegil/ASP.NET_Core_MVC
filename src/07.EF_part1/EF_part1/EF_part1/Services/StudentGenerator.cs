@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EF_part1.DBModels;
 using EF_part1.Extensions;
 using EF_part1.Interfaces;
 using EF_part1.Models;

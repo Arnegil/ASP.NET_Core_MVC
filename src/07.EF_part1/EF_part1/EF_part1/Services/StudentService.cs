@@ -28,17 +28,11 @@ namespace EF_part1.Services
         {
             return await Task.FromResult(_context.Students.FirstOrDefault(x => x.Id == studentId));
         }
-
-        private async Task<int> GetNewModelId()
-        {
-            return await Task.FromResult(_context.Students.Any() ? _context.Students.Max(x => x.Id) + 1 : 0);
-        }
-
+        
         public async Task<int> AddStudent(StudentDBModel student)
         {
-            return await Task.Run(async () =>
+            return await Task.Run(() =>
             {
-                student.Id = await GetNewModelId();
                 _context.Students.Add(student);
                 _context.SaveChanges();
 
@@ -52,23 +46,32 @@ namespace EF_part1.Services
             {
                 var student = _context.Students.FirstOrDefault(x => x.Id == studentId);
                 if (student != null)
+                {
                     _context.Students.Remove(student);
-                _context.SaveChanges();
+                    _context.SaveChanges();
+                }
             });
         }
 
-        public async Task UpdateStudent(StudentDBModel newStudent)
+        public async Task<int> UpdateStudent(StudentDBModel newStudent)
         {
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
                 var oldStudent = _context.Students.FirstOrDefault(x => x.Id == newStudent.Id);
                 if (oldStudent != null)
                 {
-                    _context.Students.Remove(oldStudent);
-                    _context.SaveChanges();
-                    _context.Students.Add(newStudent);
+                    oldStudent.FirstName = newStudent.FirstName;
+                    oldStudent.LastName = newStudent.LastName;
+                    oldStudent.MiddleName = newStudent.MiddleName;
+                    oldStudent.BirthDate = newStudent.BirthDate;
+                    oldStudent.City = newStudent.City;
+                    oldStudent.Gender = newStudent.Gender;
+                    oldStudent.TabelNumber = newStudent.TabelNumber;
+                    
                     _context.SaveChanges();
                 }
+
+                return newStudent.Id;
             });
         }
     }

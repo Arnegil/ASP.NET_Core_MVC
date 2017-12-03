@@ -12,6 +12,6 @@ namespace EF_part1.Interfaces
         Task<StudentDBModel> GetStudent(int studentId);
         Task<int> AddStudent(StudentDBModel student);
         Task RemoveStudent(int studentId);
-        Task UpdateStudent(StudentDBModel student);
+        Task<int> UpdateStudent(StudentDBModel student);
     }
 }

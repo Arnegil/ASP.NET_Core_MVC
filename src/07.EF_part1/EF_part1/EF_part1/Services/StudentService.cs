@@ -19,12 +19,12 @@ namespace EF_part1.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Student>> GetStudents()
+        public async Task<IEnumerable<StudentDBModel>> GetStudents()
         {
             return await Task.FromResult(_context.Students.ToList());
         }
 
-        public async Task<Student> GetStudent(int studentId)
+        public async Task<StudentDBModel> GetStudent(int studentId)
         {
             return await Task.FromResult(_context.Students.FirstOrDefault(x => x.Id == studentId));
         }
@@ -34,13 +34,15 @@ namespace EF_part1.Services
             return await Task.FromResult(_context.Students.Any() ? _context.Students.Max(x => x.Id) + 1 : 0);
         }
 
-        public async Task AddStudent(Student student)
+        public async Task<int> AddStudent(StudentDBModel student)
         {
-            await Task.Run(async () =>
+            return await Task.Run(async () =>
             {
                 student.Id = await GetNewModelId();
                 _context.Students.Add(student);
                 _context.SaveChanges();
+
+                return student.Id;
             });
         }
 
@@ -55,7 +57,7 @@ namespace EF_part1.Services
             });
         }
 
-        public async Task UpdateStudent(Student newStudent)
+        public async Task UpdateStudent(StudentDBModel newStudent)
         {
             await Task.Run(() =>
             {
@@ -63,9 +65,10 @@ namespace EF_part1.Services
                 if (oldStudent != null)
                 {
                     _context.Students.Remove(oldStudent);
+                    _context.SaveChanges();
                     _context.Students.Add(newStudent);
+                    _context.SaveChanges();
                 }
-                _context.SaveChanges();
             });
         }
     }

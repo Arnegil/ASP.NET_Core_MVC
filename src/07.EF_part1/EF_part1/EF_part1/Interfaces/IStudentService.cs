@@ -8,10 +8,10 @@ namespace EF_part1.Interfaces
 {
     public interface IStudentService
     {
-        Task<IEnumerable<Student>> GetStudents();
-        Task<Student> GetStudent(int studentId);
-        Task AddStudent(Student student);
+        Task<IEnumerable<StudentDBModel>> GetStudents();
+        Task<StudentDBModel> GetStudent(int studentId);
+        Task<int> AddStudent(StudentDBModel student);
         Task RemoveStudent(int studentId);
-        Task UpdateStudent(Student student);
+        Task UpdateStudent(StudentDBModel student);
     }
 }

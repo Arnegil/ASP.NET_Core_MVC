@@ -12,11 +12,11 @@ namespace EF_part1
         {
         }
 
-        public DbSet<Student> Students { get; set; }
+        public DbSet<StudentDBModel> Students { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Student>().ToTable("Student");
+            modelBuilder.Entity<StudentDBModel>().ToTable("Students");
         }
     }
 }

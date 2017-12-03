@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EF_part1.DBModels;
+using EF_part1.Extensions;
 using EF_part1.Interfaces;
 using EF_part1.Models;
 
@@ -24,13 +25,13 @@ namespace EF_part1.Services
         {
             return await Task.Run(async () => new StudentsModelVM
             {
-                Students = (await _studentService.GetStudents()).Select(ConvertStudentToVM).OrderBy(x => x.FullName)
+                Students = (await _studentService.GetStudents()).Select(x => x.ConvertStudentToVM()).OrderBy(x => x.FullName)
             });
         }
 
         public async Task<StudentVM> GetStudent(int studentId)
         {
-            return ConvertStudentToVM(await _studentService.GetStudent(studentId));
+            return (await _studentService.GetStudent(studentId)).ConvertStudentToVM();
         }
 
         public async Task<StudentVM> GetNewStudentModel()
@@ -38,19 +39,5 @@ namespace EF_part1.Services
             return await Task.FromResult(new StudentVM());
         }
 
-        private StudentVM ConvertStudentToVM(Student student)
-        {
-            return new StudentVM
-            {
-                Id = student.Id,
-                BirthDate = student.BirthDate,
-                City = student.City,
-                FirstName = student.FirstName,
-                LastName = student.LastName,
-                MiddleName = student.MiddleName,
-                Gender = student.Gender,
-                TabelNumber = student.TabelNumber
-            };
-        }
     }
 }

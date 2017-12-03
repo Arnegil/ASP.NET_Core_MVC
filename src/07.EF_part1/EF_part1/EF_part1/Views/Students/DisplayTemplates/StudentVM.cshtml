@@ -1,0 +1,17 @@
+﻿@using EF_part1.Interfaces
+@model StudentVM
+@inject IStudentHelper StudentHelper
+
+<tr>
+    <td>@Html.ActionLink(Model.FullName, "ViewStudent", "Students", new { id = Model.Id })</td>
+    <td>@Html.DisplayFor(x => x.BirthDate)</td>
+    <td>@Html.DisplayFor(x => x.City)</td>
+    <td>
+        @Html.DisplayFor(x => x.TabelNumber)
+        @if (StudentHelper.IsCoolTableNumber(Model.TabelNumber))
+        {
+            <text> Воу</text>
+        }
+    </td>
+    <td><a class="btn btn-primary" href="@Url.Action("DeleteStudent", "Students", new {id = Model.Id})">Удалить</a></td>
+</tr>

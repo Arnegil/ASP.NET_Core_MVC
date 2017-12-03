@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EF_part1.DBModels;
+using EF_part1.Extensions;
 using EF_part1.Interfaces;
+using EF_part1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,7 +28,7 @@ namespace EF_part1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateStudent(Student student)
+        public async Task<IActionResult> CreateStudent(StudentVM student)
         {
             if (!ModelState.IsValid)
             {
@@ -35,8 +36,8 @@ namespace EF_part1.Controllers
             }
 
             var service = HttpContext.RequestServices.GetService<IStudentService>();
-            await service.AddStudent(student);
-            var createdStudent = await _studentGenerator.GetStudent(student.Id);
+            var newStudentId = await service.AddStudent(student.ConvertStudentToDBModel());
+            var createdStudent = await _studentGenerator.GetStudent(newStudentId);
             return View("ViewStudent", createdStudent);
         }
 
@@ -48,7 +49,7 @@ namespace EF_part1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateStudent(Student student)
+        public async Task<IActionResult> UpdateStudent(StudentVM student)
         {
             if (!ModelState.IsValid)
             {
@@ -56,7 +57,7 @@ namespace EF_part1.Controllers
             }
 
             var service = HttpContext.RequestServices.GetService<IStudentService>();
-            await service.UpdateStudent(student);
+            await service.UpdateStudent(student.ConvertStudentToDBModel());
             return RedirectToAction("ViewStudent", student);
         }
 

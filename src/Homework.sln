@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Middleware", "02.Middleware\Middleware\Middleware.csproj", "{09788BF3-D8B6-4266-A70D-7EBFAFA5F2CA}"
 EndProject
@@ -25,7 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "06.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07.EF_part1", "07.EF_part1", "{1684916F-B773-4A1D-8BD9-B34369CD8F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_part1", "07.EF_part1\EF_part1\EF_part1\EF_part1.csproj", "{A21C37BB-A6B1-4132-B4C2-C9A47D51DDA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF_part1", "07.EF_part1\EF_part1\EF_part1\EF_part1.csproj", "{A21C37BB-A6B1-4132-B4C2-C9A47D51DDA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08.EF_part2", "08.EF_part2", "{C04B744E-9FCE-42AD-ADBB-F80C2D42E2DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_part2", "08.EF_part2\EF_part2\EF_part2.csproj", "{9AE1F0C3-8401-44BA-94A6-A950760E0A9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{A21C37BB-A6B1-4132-B4C2-C9A47D51DDA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A21C37BB-A6B1-4132-B4C2-C9A47D51DDA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A21C37BB-A6B1-4132-B4C2-C9A47D51DDA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AE1F0C3-8401-44BA-94A6-A950760E0A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AE1F0C3-8401-44BA-94A6-A950760E0A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AE1F0C3-8401-44BA-94A6-A950760E0A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AE1F0C3-8401-44BA-94A6-A950760E0A9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +76,7 @@ Global
 		{C3A69120-EB92-4CE0-9451-D9915E71DBA4} = {147BF0EB-BEE3-4D07-BAAD-B22686EDC962}
 		{5E16A702-2A73-4E00-AC10-CEEA1B977C00} = {D2622D54-CA86-4E13-842F-9A127A6276E9}
 		{A21C37BB-A6B1-4132-B4C2-C9A47D51DDA9} = {1684916F-B773-4A1D-8BD9-B34369CD8F95}
+		{9AE1F0C3-8401-44BA-94A6-A950760E0A9D} = {C04B744E-9FCE-42AD-ADBB-F80C2D42E2DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ACBCB9CD-C85B-4E9E-96D2-579DE0B22F3A}

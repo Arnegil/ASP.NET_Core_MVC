@@ -25,7 +25,7 @@ namespace DependencyInjection
             services.AddTransient<IStudentService, StudentService>(StudentServiceFactory);
             services.AddTransient<IStudentGenerator, StudentGenerator>(StudentGeneratorFactory); 
             services.AddTransient<IStudentHelper, StudentHelper>(); 
-            services.AddTransient<DataSource>();
+            services.AddSingleton<DataSource>();
             services.AddMvc();
         }
 

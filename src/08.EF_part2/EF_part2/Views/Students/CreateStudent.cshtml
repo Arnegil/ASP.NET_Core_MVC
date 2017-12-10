@@ -1,0 +1,57 @@
+﻿@model StudentVM
+@{
+    ViewData["Title"] = "Новый студент";
+}
+
+<div id="student">
+    @using (Html.BeginForm("CreateStudent", "Students", Model, FormMethod.Post))
+    {
+        <table title="Cтудент">
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.LastName)</td>
+                <td>
+                    @Html.EditorFor(x => x.LastName)
+                    @Html.ValidationMessageFor(x => x.LastName)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.FirstName)</td>
+                <td>
+                    @Html.EditorFor(x => x.FirstName)
+                    @Html.ValidationMessageFor(x => x.FirstName)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.MiddleName)</td>
+                <td>
+                    @Html.EditorFor(x => x.MiddleName)
+                    @Html.ValidationMessageFor(x => x.MiddleName)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.TabelNumber)</td>
+                <td>
+                    @Html.EditorFor(x => x.TabelNumber)
+                    @Html.ValidationMessageFor(x => x.TabelNumber)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.BirthDate)</td>
+                <td>
+                    @Html.EditorFor(x => x.BirthDate)
+                    @Html.ValidationMessageFor(x => x.BirthDate)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.City)</td>
+                <td>
+                    @Html.EditorFor(x => x.City)
+                    @Html.ValidationMessageFor(x => x.City)
+                </td>
+            </tr>
+        </table>
+
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Students")">Отменить</a>
+    }
+</div>

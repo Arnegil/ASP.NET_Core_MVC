@@ -44,8 +44,9 @@ namespace DependencyInjection.Controllers
         [HttpGet]
         public async Task<IActionResult> ViewStudent(int id)
         {
-            var dataSource = ActivatorUtilities.CreateInstance<DataSource>(HttpContext.RequestServices);
-            var student = dataSource.Students.FirstOrDefault(x => x.Id == id);
+            var service = HttpContext.RequestServices.GetService<IStudentService>();
+            var generator = ActivatorUtilities.CreateInstance<StudentGenerator>(HttpContext.RequestServices, service);
+            var student = await generator.GetStudent(id);
             return View("ViewStudent", student);
         }
 

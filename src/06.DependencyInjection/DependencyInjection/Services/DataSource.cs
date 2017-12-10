@@ -8,12 +8,11 @@ namespace DependencyInjection.Services
 {
     public class DataSource
     {
-        private static readonly List<Student> _students;
-        public List<Student> Students => _students;
+        public List<Student> Students { get; }
 
-        static DataSource()
+        public DataSource()
         {
-            _students = new List<Student>
+            Students = new List<Student>
             {
                 new Student
                 {

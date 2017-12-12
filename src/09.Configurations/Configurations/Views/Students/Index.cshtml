@@ -1,0 +1,17 @@
+﻿@model StudentsModelVM
+@{
+    ViewData["Title"] = "Students Page";
+}
+
+<div id="students">
+    <a class="btn btn-primary" href="@Url.Action("NewStudent", "Students")">Добавить</a>
+    <table title="Список студентов">
+        <tr>
+            <td>ФИО</td>
+            <td>Дата рождения</td>
+            <td>Город</td>
+            <td>Номер студенческого билета</td>
+        </tr>
+        @Html.DisplayFor(x => x.Students)
+    </table>
+</div>
